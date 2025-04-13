@@ -1,0 +1,45 @@
+Question:- The word interface is overloaded here. There’s the concept of interface, but there’s also the Java construct interface. You can program to an interface, without 
+having to actually use a Java interface. The point is to exploit polymorphism by programming to a supertype so that the actual runtime object isn’t locked into the code. 
+And we could rephrase “program to a supertype” as “the declared type of the variables should be a supertype, usually an abstract class or interface, so that the objects 
+assigned to those variables can be of any concrete implementation of the supertype, which means the class declaring them doesn’t have to know about the actual object types!” 
+
+Not understood
+
+Answer:- 
+
+🔁 The Word "Interface" is Overloaded This just means "interface" has two meanings:
+      General concept: Like "a boundary" or "a way to interact with something."
+      Java keyword: The actual interface keyword in Java (interface FlyBehavior { ... }).
+
+💡 Main Point: "Program to an interface"
+      This phrase doesn’t have to mean "use the interface keyword in Java."
+It means:
+      Write your code so that it depends on a more general type (like an abstract class or interface), not a specific one.
+
+✅ Why Do This? Let’s look at two examples.
+
+❌ Bad way (programming to a concrete type):
+      FlyWithWings fw = new FlyWithWings();
+      fw.fly();
+You're stuck with FlyWithWings forever. You can’t change the behavior easily.
+
+✅ Good way (programming to a supertype):
+      FlyBehavior fb = new FlyWithWings();
+      fb.fly();
+Now fb could be: new FlyWithWings() || new FlyNoWay() || new FlyAsRobot()
+
+The code is flexible, extensible, and follows polymorphism.
+
+🔄 So When They Say... "You can program to an interface, without having to actually use a Java interface."
+It means: 
+    You can declare your variables using an abstract class or an interface type, not a specific class—so you’re not “locked in” to any one implementation.
+
+🔧 Real-World Analogy
+Imagine you're plugging in a device (phone charger, lamp, etc.): You're not coding to a specific device. You're just using the socket (interface).
+Anything that matches the socket can be plugged in.
+
+Same thing here. Your code doesn’t care what's behind the socket, as long as it follows the contract (fly() method, etc.).
+
+🧠 Summary in One Line
+"Program to a supertype" just means:
+Use variables of type interface or abstract class, and assign them objects of any concrete class that implements it.
