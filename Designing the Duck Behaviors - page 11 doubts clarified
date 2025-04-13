@@ -43,3 +43,16 @@ Same thing here. Your code doesn’t care what's behind the socket, as long as i
 🧠 Summary in One Line
 "Program to a supertype" just means:
 Use variables of type interface or abstract class, and assign them objects of any concrete class that implements it.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:- what is the main problem with inheritance that i can explain in interview
+🔥 Main Problems with Inheritance
+            Tight Coupling – Subclasses depend heavily on the base class.
+            Fragile Base Class – Changes in the base class can break subclasses.
+            Inflexibility – Hard to change or reuse part of the inherited behavior.
+            Single Inheritance Limitation – Can't inherit from multiple classes.
+            Hierarchy Overgrowth – Leads to deep, complex class hierarchies.
+            Code Duplication Across Unrelated Classes – No reuse if there's no common parent.
+            Violates Open/Closed Principle – Requires modifying base class to add behavior.
+            Inherits Unwanted Behavior – Subclass may get methods it doesn't need.
