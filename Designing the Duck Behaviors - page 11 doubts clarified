@@ -1,7 +1,7 @@
 Question:- The word interface is overloaded here. There’s the concept of interface, but there’s also the Java construct interface. You can program to an interface, without 
 having to actually use a Java interface. The point is to exploit polymorphism by programming to a supertype so that the actual runtime object isn’t locked into the code. 
 And we could rephrase “program to a supertype” as “the declared type of the variables should be a supertype, usually an abstract class or interface, so that the objects 
-assigned to those variables can be of any concrete implementation of the supertype, which means the class declaring them doesn’t have to know about the actual object types!” 
+assigned to those variables can be of any concrete implementation of the supertype, which means the class declaring them doesn’t have to know about the actual object types” 
 
 Not understood
 
@@ -56,3 +56,27 @@ Question:- what is the main problem with inheritance that i can explain in inter
             Code Duplication Across Unrelated Classes – No reuse if there's no common parent.
             Violates Open/Closed Principle – Requires modifying base class to add behavior.
             Inherits Unwanted Behavior – Subclass may get methods it doesn't need.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Composition
+
+Question:- When you put two classes together like this you’re using composition. Instead of inheriting their behavior, the ducks get their behavior by being composed with 
+the right behavior object. 
+
+Answer:- 
+📦 What is Composition? Composition means putting one object inside another to use its behavior.
+
+🔁 Inheritance vs Composition
+            Concept	            Example	                            Meaning
+            Inheritance	      class Duck extends FlyWithWings	Duck is a FlyWithWings (not ideal)
+            Composition	      class Duck { FlyBehavior fly; }	Duck has a FlyBehavior (preferred)
+
+🧠 Why Composition is Better Here
+      You can swap behaviors at runtime.
+      It’s more flexible and reusable.
+      You avoid tightly coupling behavior to one class.
+
+✅ Final One-Line Summary
+Instead of inheriting flying and quacking, the duck uses those behaviors by containing them as objects—that’s composition.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
