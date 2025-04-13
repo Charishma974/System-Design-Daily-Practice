@@ -80,3 +80,32 @@ Answer:-
 Instead of inheriting flying and quacking, the duck uses those behaviors by containing them as objects—that’s composition.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:- The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from 
+clients that use it.
+
+Answer:- 
+💡 Simple Explanation:
+            Strategy Pattern lets you define multiple ways to do something, put each in a separate class, and switch them at runtime without changing the main class.
+
+🔧 In parts:
+      "Defines a family of algorithms"
+            → You create different versions of some behavior.
+            Example: FlyWithWings, FlyNoWay, FlyAsRobot are all different fly algorithms.
+
+      "Encapsulates each one"
+            → Each behavior is put in its own class that implements an interface.
+            Like FlyBehavior interface → multiple classes implement it.
+
+      "Makes them interchangeable"
+            → You can swap behaviors in and out (even at runtime).
+            Example: duck.setFlyBehavior(new FlyNoWay()).
+
+      "Vary independently from clients that use it"
+            → The Duck class doesn’t care how flying or quacking is done.
+            It just calls flyBehavior.fly() and trusts the behavior object to handle it.
+
+🧠 One-Line Summary:
+Strategy Pattern lets you swap parts of an object’s behavior dynamically by using interfaces and composition.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
