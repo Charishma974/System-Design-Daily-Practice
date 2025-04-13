@@ -1,0 +1,100 @@
+interface FlyBehavior{
+    void fly();
+}
+
+interface QuackBehavior{
+    void quack();
+}
+
+class QuackAsQuack implements QuackBehavior{
+    public void quack(){
+        System.out.println("Quacking like a Quack...");
+    }
+}
+
+class FlyAsRobot implements FlyBehavior{
+    public void fly(){
+        System.out.println("I'm flying as robot...");
+    }
+}
+
+class FlyWithWings implements FlyBehavior{
+    public void fly(){
+        System.out.println("I'm flying with wings...");
+    }
+}
+
+class FlyNoWay implements FlyBehavior{
+    public void fly(){
+        System.out.println("I'm not flying...");
+    }
+}
+
+abstract class Duck{
+    FlyBehavior flybehavior;
+    QuackBehavior quackbehavior;
+    void performFly(){
+        flybehavior.fly();
+    }
+    void setFlyBehavior(FlyBehavior fb){
+        flybehavior=fb;
+    }
+    void performQuack(){
+        quackbehavior.quack();
+    }
+    void setFlyBehavior(QuackBehavior qb){
+        quackbehavior=qb;
+    }
+    abstract void display();
+}
+
+class MallardDuck extends Duck{
+    MallardDuck(){
+        flybehavior = new FlyWithWings();
+    }
+    @Override
+    void display(){
+        System.out.println("I'm Mallard Duck");
+    }
+}
+
+class RubberDuck extends Duck{
+    RubberDuck(){
+        flybehavior = new FlyNoWay();
+    }
+    @Override
+    void display(){
+        System.out.println("I'm Rubber Duck");
+    }
+}
+
+class WoodenDuck extends Duck{
+    WoodenDuck(){
+        flybehavior=new FlyAsRobot();
+        quackbehavior = new QuackAsQuack();
+    }
+    @Override
+    void display(){
+        System.out.println("I'm a Wooden Duck");
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+        Duck mallard = new MallardDuck();
+        mallard.display();
+        mallard.performFly();
+        
+        Duck rubber = new RubberDuck();
+        rubber.display();
+        rubber.performFly();
+        
+        Duck wooden = new WoodenDuck();
+        wooden.display();
+        wooden.performFly();
+        wooden.performQuack();
+    }
+}
+
+
+
