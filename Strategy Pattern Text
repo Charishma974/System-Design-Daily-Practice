@@ -109,3 +109,29 @@ Answer:-
 Strategy Pattern lets you swap parts of an object’s behavior dynamically by using interfaces and composition.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:- HAS-A can be better than IS-A
+
+Answer:- 
+✅ HAS-A vs IS-A
+      IS-A → Inheritance (e.g., class Dog extends Animal)      
+      HAS-A → Composition (e.g., class Car { Engine engine; })
+
+🧠 In your duck code:
+      class Duck {
+          FlyBehavior flyBehavior;
+          QuackBehavior quackBehavior;
+      }
+👉 This is a HAS-A relationship:
+
+A Duck has-a FlyBehavior, A Duck has-a QuackBehavior
+
+You're not inheriting flying or quacking—you're composing the duck with those behaviors.
+
+💡 Why HAS-A is better here: You can change the behavior at runtime
+
+You don’t need to modify the Duck class to add new fly types. Promotes flexibility and reuse
+
+✅ So the answer: The Duck class uses HAS-A relationships with FlyBehavior and QuackBehavior by holding references to those interfaces.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
