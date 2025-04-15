@@ -135,3 +135,34 @@ You don’t need to modify the Duck class to add new fly types. Promotes flexibi
 ✅ So the answer: The Duck class uses HAS-A relationships with FlyBehavior and QuackBehavior by holding references to those interfaces.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:- The key is that a Duck will now delegate its flying and quacking behavior, instead of using quacking and flying methods defi ned in the Duck class (or subclass).
+what does delegate mean?
+
+Answer:- 
+Great question! In this context, "delegate" means that instead of the Duck class (or its subclasses) doing something itself—like flying or quacking—it hands off the 
+responsibility to another class or object that specializes in that behavior.
+
+Think of it like this: If you're organizing a party and you delegate the music to a DJ, you're not handling the music yourself. You're saying:
+
+"Hey DJ, you're in charge of the music. I’ll focus on the other stuff."
+
+In code (especially object-oriented programming):
+Rather than the Duck class having its own fly() / quack() methods with built-in logic, it uses other objects (say, a FlyBehavior or QuackBehavior) to perform those actions.
+
+Example :
+class Duck {
+    FlyBehavior flyBehavior;
+    QuackBehavior quackBehavior;
+
+    void performFly() {
+        flyBehavior.fly(); // Delegates flying to the flyBehavior object
+    }
+
+    void performQuack() {
+        quackBehavior.quack(); // Delegates quacking to the quackBehavior object
+    }
+}
+So if you want to change how a Duck flies or quacks, you just change the behavior object—not the Duck itself.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
