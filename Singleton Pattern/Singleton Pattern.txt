@@ -136,7 +136,55 @@ class ExpensiveObject {
     }
 }
 
-Explanation: The ExpensiveObject is created only when you call getInstance() for the first time. After that, the same instance is reused. In this example, the ExpensiveObject is created only when you actually need it, not at the start of the program.
+Explanation: The ExpensiveObject is created only when you call getInstance() for the first time. After that, the same instance is reused. In this example, the 
+ExpensiveObject is created only when you actually need it, not at the start of the program.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:-
+class Singleton{
+    private static Singleton uniqueInstance;
+    private Singleton(){
+        System.out.println("Created...");
+    }
+    public static Singleton getInstance(){
+        if (uniqueInstance==null) uniqueInstance=new Singleton();
+        return uniqueInstance;
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+        Singleton obj1=Singleton.getInstance();
+        Singleton obj2=Singleton.getInstance();
+        System.out.println(obj1==obj2);
+    }
+}
+
+the main motive of 
+private Singleton(){
+        System.out.println("Created...");
+}
+is to make class class get created only once am i right?
+
+Answer:- 
+The main motive of:
+    private Singleton(){
+        System.out.println("Created...");
+    }
+is to restrict the instantiation of the Singleton class from outside. Let's break it down:
+
+🔒 private Singleton() - Why private? It prevents any external class (like Main) from doing new Singleton(). Only the class itself can create an instance of Singleton.
+
+📦 How is the object created then? The object is created inside the class in the static method getInstance():
+
+if (uniqueInstance == null) {
+    uniqueInstance = new Singleton(); // Only created once
+}
+So the constructor is: Called only once (on the first call to getInstance()). Ensures that no matter how many times getInstance() is called, only one object of Singleton is 
+created. ✅ Your line: "main motive of private Singleton() is to make class get created only once" That's mostly correct, though to be precise: The private constructor 
+prevents external instantiation. The logic in getInstance() is what ensures the class is only instantiated once (i.e., lazy initialization). Together, they enforce the 
+Singleton Design Pattern. 💡
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
