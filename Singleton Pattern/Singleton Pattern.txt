@@ -41,3 +41,34 @@ public class Main {
 We don’t use new to create the object. We call getInstance() method. If it's already created, we get the same one again. So obj1 and obj2 both point to the same object.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:- There are many objects we only need one of: thread pools, caches, dialog boxes, objects that handle preferences and registry settings, objects used for logging, and objects that act as device drivers to devices like printers and graphics cards. In fact, for many of these types of objects, if we were to instantiate more than one 
+we’d run into all sorts of problems like incorrect program behavior, overuse of resources, or inconsistent results.
+
+Answer:- 
+🧠 What it’s saying (in simple words):
+    There are some objects in a program where we only need one. If we create more than one, it can cause bugs, errors, or waste system resources.
+
+📦 Examples of such objects:
+    1. Thread Pools 🧵
+        Used to manage multiple tasks. If you have more than one, you might mess up task scheduling or overload the system.
+    2. Cache ⚡
+        Stores temporary data to avoid doing the same work again. If there are multiple caches, they might hold different data → inconsistent results.
+    3. Dialog Boxes 💬
+        A popup window. If your program opens 10 copies, it gets messy!
+    4. Preferences / Settings Handlers ⚙️
+        Like app settings. If two different objects change the settings differently → your app may behave unpredictably.
+    5. Loggers 📜
+        Used to keep track of what the app is doing. If multiple logger objects exist, logs might go to different places → hard to track bugs.
+    6. Device Drivers 🖨️🎮
+        For things like printers or graphics cards. If two driver objects try to talk to the device at the same time → conflict!
+
+💥 What happens if we make multiple?
+    ❌ Wrong behavior
+    ❌ Too much memory or CPU used
+    ❌ Conflicting or inconsistent data
+
+✅ So what's the solution? Use the Singleton Pattern — it makes sure only ONE object of that kind is ever created.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
