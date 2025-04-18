@@ -72,3 +72,71 @@ Answer:-
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Question:- The Singleton Pattern also gives us a global point of access, just like a global variable, but without the downsides.
+
+Answer:- 👉 It gives us a way to access that single object from anywhere in the program — like a global variable.
+Logger logger = Logger.getInstance();  // use it anywhere in the app
+
+⚠️ “…just like a global variable, but without the downsides.”
+👉 Global variables are dangerous because: They can be changed by anyone, anytime 😬. They make debugging hard
+But with Singleton, you get the convenience of a global variable (one point of access), without the risks.
+
+🔹 Feature                  | ✅ Singleton Pattern
+One object only?            | ✅ Yes
+Global access?              | ✅ Yes
+Safer than global vars?     | ✅ Yes
+Commonly used in real apps? | ✅ Absolutely (loggers, DB connections, etc.)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question:- Well, here’s one example: if you assign an object to a global variable, then that object might be created when your application begins. Right? What if this 
+object is resource intensive and your application never ends up using it? As you will see, with the Singleton Pattern, we can create our objects only when they are needed.
+
+Answer:- 
+difference between a global variable and a singleton pattern
+
+1. Global Variable Example:
+
+class GlobalExample {
+    static ExpensiveObject globalObject = new ExpensiveObject();
+    public static void main(String[] args) {
+        System.out.println("Global Variable Example:");
+    }
+}
+
+class ExpensiveObject {
+    ExpensiveObject() {
+        System.out.println("ExpensiveObject created");
+    }
+}
+
+Explanation: In this case, globalObject is created as soon as the program starts. Even if you never use it, it's consuming resources, and the object is created right away.
+
+2. Singleton Pattern Example:
+
+class SingletonExample {
+    private static ExpensiveObject singletonObject = null;
+    public static void main(String[] args) {
+        System.out.println("Singleton Pattern Example:");
+        ExpensiveObject object1 = SingletonExample.getInstance();
+        ExpensiveObject object2 = SingletonExample.getInstance();
+        System.out.println(object1 == object2);
+    }
+    public static ExpensiveObject getInstance() {
+        if (singletonObject == null) {
+            singletonObject = new ExpensiveObject();
+        }
+        return singletonObject;
+    }
+}
+
+class ExpensiveObject {
+    ExpensiveObject() {
+        System.out.println("ExpensiveObject created");
+    }
+}
+
+Explanation: The ExpensiveObject is created only when you call getInstance() for the first time. After that, the same instance is reused. In this example, the ExpensiveObject is created only when you actually need it, not at the start of the program.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
