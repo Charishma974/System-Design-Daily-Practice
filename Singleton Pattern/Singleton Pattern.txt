@@ -1,0 +1,43 @@
+Question:- Our next stop is the Singleton Pattern, our ticket to creating oneof-a-kind objects for which there is only one instance. - not understood
+
+Answer:- The Singleton Pattern is like a rule that says: “Only one object of this class can ever exist during the entire run of the program.”
+
+🔑 Why would we want that?
+Imagine you have a central controller in your app (like for logging, configuration, or DB connection). You don’t want multiple versions of it – just one that everyone shares.
+That’s when Singleton comes in!
+
+🧱 Real-life Analogy:
+Think of the President of a country. Only one person can be the president at a time. If everyone could make their own president, there’d be chaos.
+So, we ensure there’s only one — that’s a Singleton.
+
+💻 Java Code Example:
+public class Singleton {
+    // 1. Create a private static instance of the class
+    private static Singleton instance;
+
+    // 2. Make the constructor private (so no one can use 'new')
+    private Singleton() {
+        System.out.println("Singleton Instance Created!");
+    }
+
+    // 3. Provide a public method to get the instance
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton(); // create only once
+        }
+        return instance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Singleton obj1 = Singleton.getInstance();
+        Singleton obj2 = Singleton.getInstance();
+
+        System.out.println(obj1 == obj2);  // Output: true ✅
+    }
+}
+🔄 What’s happening?
+We don’t use new to create the object. We call getInstance() method. If it's already created, we get the same one again. So obj1 and obj2 both point to the same object.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
